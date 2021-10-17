@@ -1,0 +1,17 @@
+System.out.println("_________________________________________________");
+System.out.println("|Subjects| Total marks|Obtained marks|Percentage|");
+System.out.println("|------------------------------------------------");
+System.out.println("|English |    100     |"  + eng +   "|"+ eng+%" |");
+System.out.println("|        |            |              |          |");
+System.out.println("|Hindi   |    100     |"  + hin +   "|"+ hin+"% |");
+System.out.println("|        |            |              |          |");
+System.out.println("|Maths   |    100     |"  + mat +   "|"+ mat+"% |");
+System.out.println("|        |            |              |          |");
+System.out.println("|Science |    100     |"  + sci +   "|"+ sci+"% |");
+System.out.println("|        |            |             "|          |");
+System.out.println("|S.Sci   |    100     |"  + ss  +   "|"+ ss+"%  |");
+System.out.println("-------------------------------------------------");
+System.out.println("|Total marks:"+ obt +"|Total percent:"  + per +"|");
+System.out.println("-------------------------------------------------");
+System.out.println("|Status: "+ stat +"                             |");
+System.out.println("—————————————————————————————————————————————————");
