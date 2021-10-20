@@ -150,7 +150,7 @@ public class Main {
     System.out.println("\033[32m|        |            |              |          |\033[00m");
     System.out.println("\033[32m|\033[34mHindi   \033[32m|\033[37m    100     \033[32m|\033[37m    "+hpp+hin+"       \033[32m|\033[31m "+hpp+hin+"\033[35m%     \033[32m|\033[00m");
     System.out.println("\033[32m|        |            |              |          |\033[00m");
-    System.out.println("\033[32m|\033[34mMaths   \033[32m|\033[37m    100     \033[32m|\033[37m    "+mpp+hin+"       \033[32m|\033[31m "+mpp+mat+"\033[35m%     \033[32m|\033[00m");
+    System.out.println("\033[32m|\033[34mMaths   \033[32m|\033[37m    100     \033[32m|\033[37m    "+mpp+mat+"       \033[32m|\033[31m "+mpp+mat+"\033[35m%     \033[32m|\033[00m");
     System.out.println("\033[32m|        |            |              |          |\033[00m");
     System.out.println("\033[32m|\033[34mScience \033[32m|\033[37m    100     \033[32m|\033[37m    "+spp+sci+"       \033[32m|\033[31m "+spp+sci+"\033[35m%     \033[32m|\033[00m");
     System.out.println("\033[32m|        |            |              |          |\033[00m");
