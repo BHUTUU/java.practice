@@ -1,0 +1,69 @@
+
+
+
+    1digit {
+      firstColor=black [fixed] //yahi hoga hamesha
+      secondColor=black [variable]
+      thirdColor=black [fixed] //yahi hoga hamesha
+      fourthColor=(null)
+           }
+
+    2digit {
+      firstColor=brown [variable] //never black
+      secondColor=black [variable]
+      thirdColor=black [fixed] //yahi hoga hamesha
+      fourthColor=(null)
+           }
+
+    3digit {
+      firstColor=brown [variable] //never black
+      secondColor=black [variable]
+      if(3rdDigit == 0):
+        thirdColor=brown [fixed] //yahi hoga hamesha
+        fourthColour=(null)
+      else:
+        thirdColor=brown [variable] //never black      
+        fourthColor=black [fixed] //yahi hoga hamesha  
+           }
+
+    4digit {
+      firstColor=brown [variable] //never black
+      secondColor=black [variable]
+      if(4thDigit > 0):
+        Error()
+      else:
+        if(3rdDigit == 0):
+          thirdColor=red [fixed] //yahi hoga hamesha
+          fourthColor=(null)
+        else:
+          thirdColor=black [variable]
+          fourthColor=brown [fixed] //yahi hoga hamesha
+           }
+
+    5digit {
+      firstColor=brown [variable] //never black
+      secondColor=black [variable]
+      if(5thDigit > 0 || 4thDigit > 0):
+        Error()
+      else:
+        if(3rdDigit == 0):
+          thirdColor=orange [fixed] //yahi hoga hamesha
+          fourthColor=(null)
+        else:
+          thirdColor=black [variable]
+          fourthColour=red [fixed] //yahi hoga hamesha
+           }
+
+    6digit {
+      firstColor=brown [variable] //never black
+      secondColor=black [variable]
+      if(6thDigit > 0 || 5thDigit > 0 || 4thDigit > 0):
+        Error()
+      else:
+        if(3rdDigit == 0):
+          thirdColor=yellow [fixed] //yahi hoga hamesha
+          fourthColor=(null)
+        else:
+          thirdColor=black [variable]
+          fourthColour=orange [fixed] //yahi hoga hamesha
+           }

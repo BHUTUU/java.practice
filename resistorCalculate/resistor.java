@@ -6,9 +6,10 @@
 package com.bhutuu;
 import java.util.Scanner;
 
-public class Main {
+public class ResistorColorCode {
   public static void main(String[] args) {
-    int back=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, grey=8, white=9;
+    int a, back=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, grey=8, white=9;
+    String firstColor, secondColor, thirdColor, fourthColor,  stValue, value;
     Scanner bhu = new Scanner(System.in);
     System.out.println("""
 
@@ -31,21 +32,245 @@ public class Main {
     """);
     System.out.print("Enter your option=> ");
     int opt=bhu.nextInt();
+    encoder(opt);
+  }
+  public static int encoder(int opt) {
+    String firstColor, secondColor, thirdColor, fourthColor,  stValue, value;
+    Scanner st= new Scanner(System.in);
     if (opt == 1) {
-      System.out.print("Enter the value of your resistor in ohm (only integer)=> ");
-      int value=bhu.nextInt();
-      String stValue=Integer.toString(value);
-      if (stValue.length() == 1) {
-        int a = value;
-        String firstColor=colorDigit(a);
-      } else if (stValue.length() == 2) {
-        int a=Integer.valueOf(stValue.substring(0));
-        String firstColor=colorDigit(a);
-        a=Integer.valueOf(stValue.substring(1));
-        String secondColor=colorDigit(a);
-        System.out.println(firstColor+"\t"+secondColor);
+      System.out.print("Enter the value of your resistor(specify M or k or o)=> ");
+      value=st.nextLine();
+      int n=value.length();
+      char ex=value.charAt(n-1);
+      long numericalValue=Long.valueOf(value.substring(0, n-1));
+      if (ex == 'M') {
+        Long two=(numericalValue*1000000);
+        stValue=Long.toString(two);
+        evaluatColor(stValue);
+      } else if (ex == 'k' || ex == 'K') {
+        Long two=(numericalValue*1000);
+        stValue=Long.toString(two);
+        evaluatColor(stValue);
+      } else if (ex == 'o' || ex == 'O') {
+        stValue=Long.toString(numericalValue);
+        evaluatColor(stValue);
+      } else {
+        System.out.println("Enter with a valid unit! either o or k");
       }
     }
+    return 0;
+  }
+  public static String evaluatColor(String stValue) {
+    int a, back=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, grey=8, white=9;
+    String firstColor, secondColor, thirdColor, fourthColor;
+    if (stValue.length() == 1) {
+      a=Integer.valueOf(stValue);
+      firstColor="black";
+      secondColor=colorDigit(a);
+      thirdColor="black";
+      fourthColor="null";
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 2) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a); //never black
+      a=Integer.valueOf(stValue.substring(1));
+      secondColor=colorDigit(a);
+      thirdColor="black";
+      fourthColor="null";
+    } else if (stValue.length() == 3) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a); //never black
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(2, 3));
+      if (a == 0) {
+        thirdColor="brown";
+        fourthColor="null";
+      } else {
+        thirdColor=colorDigit(a);
+        fourthColor="black";
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 4) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a); //never black
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 4));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="red";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="brown";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 5) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 5));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="orange";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="red";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 6) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 6));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="yellow";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="orange";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 7) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 7));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="green";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="yellow";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 8) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 8));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="blue";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="green";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 9) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 9));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="violet";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="blue";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 10) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 10));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="grey";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="violet";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else if (stValue.length() == 11) {
+      a=Integer.valueOf(stValue.substring(0, 1));
+      firstColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(1, 2));
+      secondColor=colorDigit(a);
+      a=Integer.valueOf(stValue.substring(3, 11));
+      if (a > 0) {
+        firstColor="Error";
+        secondColor="Error";
+        thirdColor="Error";
+        fourthColor="Error";
+      } else {
+        a=Integer.valueOf(stValue.substring(2, 3));
+        if (a == 0) {
+          thirdColor="white";
+          fourthColor="null";
+        } else {
+          thirdColor=colorDigit(a);
+          fourthColor="grey";
+        }
+      }
+      System.out.println(firstColor+"\t"+secondColor+"\t"+thirdColor+"\t"+fourthColor);
+    } else {
+      System.out.println("Out of range........!!");
+    }
+    return stValue;
   }
   public static String colorDigit(int a) {
     String colorDigit="a"; //i put here "a" just to initialise the variable colorDigit.
@@ -75,17 +300,3 @@ public class Main {
     return colorDigit;
   }
 }
-
-
-
-/*
-logic;
-for value to colour code!
-pahle hm vlaue lenge user se then uska firstt difit dekhnege.
-
-
-
-
-
-
-   */
