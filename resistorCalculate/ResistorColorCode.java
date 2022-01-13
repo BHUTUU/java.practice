@@ -56,7 +56,7 @@ public class ResistorColorCode {
           System.out.println("Enter with a valid unit! either o or k");
         }
       } else if (opt == 2) {
-        System.out.print("How  many colorBands on your resistor? (four or five)=> ");
+        System.out.print("How  many colorBands on your resistor? (4 or 5)=> ");
         int band=bhu.nextInt();
         System.out.println(band);
         if (band==4) {
@@ -95,9 +95,9 @@ public class ResistorColorCode {
           } else {
             System.out.println("Enter valid colors only! list:\n"+validColors);
           }
-        } //else {
-          //System.out.println("Choose whether 4 or 5 and nothing else!");
-        //}
+        } else {
+          System.out.println("Choose whether 4 or 5 and nothing else!");
+        }
       }
     }
   }
