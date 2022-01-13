@@ -11,6 +11,7 @@ public class ResistorColorCode {
     int a, back=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, grey=8, white=9;
     String firstColor, secondColor, thirdColor, fourthColor,  stValue, value;
     Scanner bhu = new Scanner(System.in);
+    Scanner st= new Scanner(System.in);
     System.out.println("""
 
       Welcome to ~
@@ -30,35 +31,31 @@ public class ResistorColorCode {
         01. value to colour code.
         02. colour code to value.
     """);
-    System.out.print("Enter your option=> ");
-    int opt=bhu.nextInt();
-    encoder(opt);
-  }
-  public static int encoder(int opt) {
-    String firstColor, secondColor, thirdColor, fourthColor,  stValue, value;
-    Scanner st= new Scanner(System.in);
-    if (opt == 1) {
-      System.out.print("Enter the value of your resistor(specify M or k or o)=> ");
-      value=st.nextLine();
-      int n=value.length();
-      char ex=value.charAt(n-1);
-      long numericalValue=Long.valueOf(value.substring(0, n-1));
-      if (ex == 'M') {
-        Long two=(numericalValue*1000000);
-        stValue=Long.toString(two);
-        evaluatColor(stValue);
-      } else if (ex == 'k' || ex == 'K') {
-        Long two=(numericalValue*1000);
-        stValue=Long.toString(two);
-        evaluatColor(stValue);
-      } else if (ex == 'o' || ex == 'O') {
-        stValue=Long.toString(numericalValue);
-        evaluatColor(stValue);
-      } else {
-        System.out.println("Enter with a valid unit! either o or k");
+    while (true) {
+      System.out.print("Enter your option=> ");
+      int opt=bhu.nextInt();
+      if (opt == 1) {
+        System.out.print("Enter the value of your resistor(specify M or k or o)=> ");
+        value=st.nextLine();
+        int n=value.length();
+        char ex=value.charAt(n-1);
+        long numericalValue=Long.valueOf(value.substring(0, n-1));
+        if (ex == 'M') {
+          Long two=(numericalValue*1000000);
+          stValue=Long.toString(two);
+          evaluatColor(stValue);
+        } else if (ex == 'k' || ex == 'K') {
+          Long two=(numericalValue*1000);
+          stValue=Long.toString(two);
+          evaluatColor(stValue);
+        } else if (ex == 'o' || ex == 'O') {
+          stValue=Long.toString(numericalValue);
+          evaluatColor(stValue);
+        } else {
+          System.out.println("Enter with a valid unit! either o or k");
+        }
       }
     }
-    return 0;
   }
   public static String evaluatColor(String stValue) {
     int a, back=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, grey=8, white=9;
