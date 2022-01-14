@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ResistorColorCode {
   public static void main(String[] args) {
     int a, back=0, brown=1, red=2, orange=3, yellow=4, green=5, blue=6, violet=7, grey=8, white=9;
-    String firstColor, secondColor, thirdColor, fourthColor,  stValue, value;
+    String firstColor, secondColor, thirdColor, fourthColor,  stValue, value, colorName;
     String validColors="black brown red orange yellow green blue violet grey white";
     Scanner bhu = new Scanner(System.in);
     Scanner st= new Scanner(System.in);
@@ -60,16 +60,16 @@ public class ResistorColorCode {
         int band=bhu.nextInt();
         System.out.println(band);
         if (band==4) {
-          System.out.println("Valid colors: black, brown, red, orange, yellow, green, blue, violet, grey, white\n");
-          System.out.print("Enter the first band color=>");
-          String a1=st.nextLine();
+          System.out.println("((Index.)color): (0.)black, (1.)brown, (2.)red, (3.)orange, (4.)yellow,\n                 (5.)green, (6.)blue, (7.)violet, (8)grey, (9.)white\n\n");
+          System.out.print("Index of first band color=>");
+          a=bhu.nextInt();
+          firstColor=colorDigit(a);
           System.out.print("Enter the Second band color=>");
-          String a2=st.nextLine();
+          a=bhu.nextInt();
+          secondColor=colorDigit(a);
           System.out.print("Enter the third band color=>");
-          String a3=st.nextLine();
-          firstColor=a1.toLowerCase();
-          secondColor=a2.toLowerCase();
-          thirdColor=a3.toLowerCase();
+          a=bhu.nextInt();
+          thirdColor=colorDigit(a);
           fourthColor="null";
           if (validColors.contains(firstColor) && validColors.contains(secondColor) && validColors.contains(thirdColor)) {
             decodeMain(band, firstColor, secondColor, thirdColor, fourthColor);
@@ -77,19 +77,19 @@ public class ResistorColorCode {
             System.out.println("Enter valid colors only! list:\n"+validColors);
           }
         } else if (band==5) {
-          System.out.println("Valid colors: black, brown, red, orange, yellow, green, blue, violet, grey, white\n");
-          System.out.print("Enter the first band color=>");
-          String a1=st.nextLine();
+          System.out.println("((Index.)color): (0.)black, (1.)brown, (2.)red, (3.)orange, (4.)yellow,\n                 (5.)green, (6.)blue, (7.)violet, (8)grey, (9.)white\n\n");
+          System.out.print("Index of first band color=>");
+          a=bhu.nextInt();
+          firstColor=colorDigit(a);
           System.out.print("Enter the Second band color=>");
-          String a2=st.nextLine();
+          a=bhu.nextInt();
+          secondColor=colorDigit(a);
           System.out.print("Enter the third band color=>");
-          String a3=st.nextLine();
-          System.out.print("Enter the fourth band color=> ");
-          String a4=st.nextLine();
-          firstColor=a1.toLowerCase();
-          secondColor=a2.toLowerCase();
-          thirdColor=a3.toLowerCase();
-          fourthColor=a4.toLowerCase();
+          a=bhu.nextInt();
+          thirdColor=colorDigit(a);
+          System.out.print("Enter the fourth band color=>");
+          a=bhu.nextInt();
+          fourthColor=colorDigit(a);
           if (validColors.contains(firstColor) && validColors.contains(secondColor) && validColors.contains(thirdColor) && validColors.contains(fourthColor)) {
             decodeMain(band, firstColor, secondColor, thirdColor, fourthColor);
           } else {
